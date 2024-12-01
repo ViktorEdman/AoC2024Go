@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"math"
 	"slices"
-	"strconv"
-	"strings"
 
 	"github.com/ViktorEdman/AoC2024Go/utils"
 )
@@ -15,7 +13,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	slice1, slice2 := getSlices(input)
+	slice1, slice2 := utils.GetSlices(input)
 	distance, err := countDistances(slice1, slice2)
 	similarityScore := scoreSimilarities(slice1, slice2)
 	if err != nil {
@@ -37,29 +35,6 @@ func scoreSimilarities(slice1, slice2 []int) int {
 		totalSimilarity += (num * totalOccurences)
 	}
 	return totalSimilarity
-}
-
-func getSlices(input string) ([]int, []int) {
-	slice1 := []int{}
-	slice2 := []int{}
-	list := strings.Split(input, "\n")
-	for _, row := range list {
-		if len(row) < 2 {
-			break
-		}
-		pair := strings.Split(row, "   ")
-		num1, err := strconv.Atoi(pair[0])
-		if err != nil {
-			panic(err)
-		}
-		num2, err := strconv.Atoi(pair[1])
-		if err != nil {
-			panic(err)
-		}
-		slice1 = append(slice1, num1)
-		slice2 = append(slice2, num2)
-	}
-	return slice1, slice2
 }
 
 func countDistances(slice1, slice2 []int) (int, error) {
