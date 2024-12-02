@@ -1,6 +1,10 @@
 package main
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/ViktorEdman/AoC2024Go/utils"
+)
 
 var input = `3   4
 4   3
@@ -11,7 +15,7 @@ var input = `3   4
 
 func TestCountDistances(t *testing.T) {
 	want := 11
-	result, err := countDistances(getSlices(input))
+	result, err := countDistances(utils.GetSlices(input))
 	if err != nil {
 		t.Error(err)
 	}
@@ -22,7 +26,7 @@ func TestCountDistances(t *testing.T) {
 
 func TestScoreSimilarities(t *testing.T) {
 	want := 31
-	result := scoreSimilarities(getSlices(input))
+	result := scoreSimilarities(utils.GetSlices(input))
 	if want != result {
 		t.Errorf("Wanted %v, got %v", want, result)
 	}
