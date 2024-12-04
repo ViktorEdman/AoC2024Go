@@ -7,6 +7,16 @@ import (
 	"strings"
 )
 
+func MakeGrid(input string) (grid [][]string) {
+	rows := strings.Split(input, "\n")
+	for i := range rows {
+		columns := strings.Split(rows[i], "")
+		grid = append(grid, columns)
+	}
+
+	return grid
+}
+
 func GetInput(fileName string) (string, error) {
 	file, err := os.Open(fileName)
 	if err != nil {
